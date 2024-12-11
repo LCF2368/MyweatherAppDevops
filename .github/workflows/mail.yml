@@ -43,6 +43,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} << 'EOF'
             cd /path/to/your/app &&
             git pull origin main &&
-            # Restart your application here (uncomment and modify as needed):
+            # Uncomment and modify the following line as needed to restart your application
             # sudo systemctl restart your-app.service
           EOF
