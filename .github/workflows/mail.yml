@@ -24,7 +24,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests (if you have any)
-        run: echo "No tests defined"
+        run: |
+          echo "Running tests..."
+          # Replace with your test commands, e.g., pytest or unittest
+          echo "No tests defined"
 
   deploy:
     needs: build
@@ -40,9 +43,9 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} << 'EOF'
-            cd /path/to/your/app &&
-            git pull origin main &&
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} <<EOF
+            cd /path/to/your/app
+            git pull origin main
             # Uncomment and modify the following line as needed to restart your application
             # sudo systemctl restart your-app.service
           EOF
